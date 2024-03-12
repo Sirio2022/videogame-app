@@ -2,11 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  background: no-repeat center center fixed;
-  background-position: center;
-  background-size: cover;
-  background-image: url('../app/images/Bg.jpeg');
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
 
+body {
+  background: url('../app/images/Bg 1.svg') no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
+}
