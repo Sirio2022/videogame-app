@@ -10,7 +10,7 @@ interface ApiResponse {
 const getGames = async () => {
   try {
     const response = await Axios.get<ApiResponse>(
-      'games?key=291db4993f4a4bdb93b5f5d4f06a9a04'
+      `games?key=${process.env.RAWG_API_KEY}`
     );
 
     const games = response.data.results;
