@@ -12,13 +12,13 @@ export default async function Home() {
   const games = await gameService.getGames();
 
   return (
-    <main className="flex flex-col items-center justify-between p-6">
+    <div className="flex flex-col items-center justify-between p-6">
       <LandingInfo />
 
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-6">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-4 xl:grid-cols-8">
         {Array.isArray(games) &&
           games.map((game) => <GameItem key={game.id} game={game} />)}
       </div>
-    </main>
+    </div>
   );
 }
