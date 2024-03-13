@@ -22,12 +22,26 @@ export default function GameItem({ game }: { game: Game }) {
           <Link href={`/games/${game.slug}`}>{game.name}</Link>
         </h2>
         <p className="text-xs text-base-content mt-2">
-          {game.genres.join(', ')}
+          <p className="mb-1">Genres:</p>
+          {game.genres.map((genre) => (
+            <span key={genre.id} className="mr-2">
+              {genre.name}
+            </span>
+          ))}
         </p>
         <p className="text-xs text-base-content mt-2">
-          {game.platforms.join(', ')}
+          <p className="mb-1">Platforms:</p>
+          {game.platforms.map((platform) => (
+            <span key={platform.platform.id} className="mr-2">
+              {platform.platform.name}
+            </span>
+          ))}
         </p>
-        <p className="text-xs text-base-content mt-2">{game.releaseDate}</p>
+
+        <p className="text-xs text-base-content mt-2">
+          <p className="mb-1">Realesed At:</p>
+          {game.released}
+        </p>
         <p className="text-xs text-base-content mt-2">Rating: {game.rating}</p>
       </div>
     </div>

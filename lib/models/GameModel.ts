@@ -1,12 +1,26 @@
 // Purpose: Model for Game.
 
+interface Genre {
+  id: number;
+  name: string;
+}
+
+interface PlatformDetails {
+  id: number;
+  name: string;
+}
+
+interface Platform {
+  platform: PlatformDetails;
+}
+
 export type Game = {
   id: string;
   slug: string;
   name: string;
   background_image: string;
   rating: number;
-  platforms: string[];
-  genres: string[];
-  releaseDate: string;
+  platforms: Platform[];
+  genres: Genre[];
+  released: string;
 };
