@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import LandingInfo from './components/LandingInfo';
+import LandingInfo from './components/landinginfo/LandingInfo';
 import gameService from '@/lib/services/gameService';
 import GameItem from './components/games/GameItem';
 
