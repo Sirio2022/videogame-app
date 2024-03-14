@@ -22,5 +22,6 @@ export type Game = {
   rating: number;
   platforms: Platform[];
   genres: Genre[];
+  description: string;
   released: string;
 };

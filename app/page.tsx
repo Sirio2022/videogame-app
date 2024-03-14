@@ -12,7 +12,7 @@ export default async function Home() {
   const games = await gameService.getGames();
 
   return (
-    <div className="flex flex-col items-center justify-between p-6">
+    <div className="flex flex-col items-center justify-between p-6 vh-100">
       <LandingInfo />
 
       <div className="grid grid-cols-1 gap-4 md:grid-cols-4 xl:grid-cols-8">

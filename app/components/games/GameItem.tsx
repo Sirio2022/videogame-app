@@ -6,7 +6,7 @@ export default function GameItem({ game }: { game: Game }) {
   return (
     <div className="card bg-base-300 shadow-xl mb-4">
       <figure>
-        <Link href={`/games/${game.slug}`}>
+        <Link href={`/games/${game.id}`}>
           <Image
             src={game.background_image}
             alt={game.name}

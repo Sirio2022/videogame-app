@@ -21,11 +21,23 @@ const getGames = async () => {
   }
 };
 
-const getGamesBySlug = async (slug: string) => {};
+const getGamesById = async (id: number) => {
+  try {
+    const response = await Axios.get<Game>(
+      `games/${id}?key=${process.env.RAWG_API_KEY}`
+    );
+
+    const game = response.data;
+
+    return game;
+  } catch (error) {
+    console.log('Error fetching game', error);
+  }
+};
 
 const gameService = {
   getGames,
-  getGamesBySlug,
+  getGamesById,
 };
 
 export default gameService;
