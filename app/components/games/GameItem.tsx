@@ -39,7 +39,7 @@ export default function GameItem({ game }: { game: Game }) {
         </p>
 
         <p className="text-xs text-base-content mt-2">
-          <p className="mb-1">Realesed At:</p>
+          <p className="mb-1">Realese Date:</p>
           {game.released}
         </p>
         <p className="text-xs text-base-content mt-2">Rating: {game.rating}</p>
