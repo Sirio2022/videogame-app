@@ -1,31 +1,31 @@
+'use client';
+
+import usePagination from '@/lib/hooks/usePaginationStore';
+import gameService from '@/lib/services/gameService';
+
 export default function Pagination() {
+  const { page, setPage } = usePagination();
+
+  gameService.getGames(page);
+
+  const handlePrevious = () => {
+    setPage(page - 1);
+  };
+
+  const handleNext = () => {
+    setPage(page + 1);
+  };
+
   return (
-    <div className="join">
-      <input
-        className="join-item btn btn-square"
-        type="radio"
-        name="options"
-        aria-label="1"
-        checked
-      />
-      <input
-        className="join-item btn btn-square"
-        type="radio"
-        name="options"
-        aria-label="2"
-      />
-      <input
-        className="join-item btn btn-square"
-        type="radio"
-        name="options"
-        aria-label="3"
-      />
-      <input
-        className="join-item btn btn-square"
-        type="radio"
-        name="options"
-        aria-label="4"
-      />
+    <div>
+      <div className="join grid grid-cols-2">
+        <button className="join-item btn btn-outline" onClick={handlePrevious}>
+          Previous page
+        </button>
+        <button className="join-item btn btn-outline" onClick={handleNext}>
+          Next
+        </button>
+      </div>
     </div>
   );
 }

@@ -5,12 +5,14 @@ import GameItem from './components/games/GameItem';
 import LandingInfo from './components/landinginfo/LandingInfo';
 import Pagination from './components/pagination/Pagination';
 
+
 export const metadata: Metadata = {
   title: process.env.NEXT_PUBLIC_APP_NAME,
   description: process.env.NEXT_PUBLIC_APP_DESCRIPTION,
 };
 
 export default async function Home() {
+  
   const games = await gameService.getGames();
 
   return (
@@ -23,6 +25,7 @@ export default async function Home() {
       </div>
 
       <Pagination />
+     
     </div>
   );
 }
