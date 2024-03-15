@@ -9,7 +9,6 @@ const instance = axios.create({
     'Cache-Control': 'no-cache',
     Expires: '0',
   },
-  timeout: 10000,
 });
 
 const AxiosInstance = setupCache(instance);
