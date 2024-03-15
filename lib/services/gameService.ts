@@ -24,7 +24,7 @@ const getGames = async (page: number = 1) => {
 const getGamesById = async (id: number) => {
   try {
     const response = await Axios.get<Game>(
-      `games/${id}?key=${process.env.RAWG_API_KEY}`
+      `games/${id}?key=${process.env.NEXT_PUBLIC_RAWG_API_KEY}`
     );
 
     const game = response.data;

@@ -8,7 +8,7 @@ interface GenresResponse {
 const getGenres = async () => {
   try {
     const response = await Axios.get<GenresResponse>(
-      `genres?key=${process.env.RAWG_API_KEY}`
+      `genres?key=${process.env.NEXT_PUBLIC_RAWG_API_KEY}`
     );
 
     const genres = response.data.results;
