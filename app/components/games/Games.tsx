@@ -10,7 +10,6 @@ export default function Games() {
   const { page, setPage } = usePagination();
 
   const [games, setGames] = useState<Game[]>([]);
-  console.log(games);
 
   useEffect(() => {
     const fetchGames = async () => {
@@ -35,13 +34,20 @@ export default function Games() {
           games.map((game) => <GameItem key={game.id} game={game} />)}
       </div>
 
-      <div className="join grid grid-cols-2">
-        <button className="join-item btn btn-outline" onClick={handlePrevious}>
-          Previous page
-        </button>
-        <button className="join-item btn btn-outline" onClick={handleNext}>
-          Next
-        </button>
+      <div className="join flex justify-center">
+        <div>
+          <button
+            className="join-item btn btn-outline"
+            onClick={handlePrevious}
+          >
+            Previous page
+          </button>
+        </div>
+        <div>
+          <button className="join-item btn btn-outline" onClick={handleNext}>
+            Next page
+          </button>
+        </div>
       </div>
     </div>
   );

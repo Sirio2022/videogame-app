@@ -1,4 +1,3 @@
-import Axios from '@/app/utils/axiosWithCache';
 import { Game } from '../models/GameModel';
 
 //export const revalidate = 60 * 60 * 24 * 7 * 4; // 4 weeks
@@ -9,33 +8,35 @@ interface ApiResponse {
 
 const getGames = async (page: number = 1) => {
   try {
-    const response = await Axios.get<ApiResponse>(
-      `games?key=${process.env.NEXT_PUBLIC_RAWG_API_KEY}&page=${page}`,
-      {
-        headers: {
-          Pragma: 'no-cache',
-          'Cache-Control': 'no-cache',
-          Expires: '0',
-        },
-      }
+    const response = await fetch(
+      `https://api.rawg.io/api/games?key=${process.env.NEXT_PUBLIC_RAWG_API_KEY}&page=${page}`
     );
-    console.log('response', response);
 
-    const games = response.data.results;
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+
+    const data = await response.json();
+    const games = data.results;
 
     return games;
   } catch (error) {
     console.log('Error fetching games', error);
+    return []; // Return an empty array in case of error
   }
 };
 
 const getGamesById = async (id: number) => {
   try {
-    const response = await Axios.get<Game>(
-      `games/${id}?key=${process.env.NEXT_PUBLIC_RAWG_API_KEY}`
+    const response = await fetch(
+      `https://api.rawg.io/api/games/${id}?key=${process.env.NEXT_PUBLIC_RAWG_API_KEY}`
     );
 
-    const game = response.data;
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+
+    const game = await response.json();
 
     return game;
   } catch (error) {
