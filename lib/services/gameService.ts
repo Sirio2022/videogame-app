@@ -10,8 +10,16 @@ interface ApiResponse {
 const getGames = async (page: number = 1) => {
   try {
     const response = await Axios.get<ApiResponse>(
-      `games?key=${process.env.NEXT_PUBLIC_RAWG_API_KEY}&page=${page}`
+      `games?key=${process.env.NEXT_PUBLIC_RAWG_API_KEY}&page=${page}`,
+      {
+        headers: {
+          Pragma: 'no-cache',
+          'Cache-Control': 'no-cache',
+          Expires: '0',
+        },
+      }
     );
+    console.log('response', response);
 
     const games = response.data.results;
 
