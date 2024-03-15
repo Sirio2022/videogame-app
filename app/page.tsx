@@ -3,6 +3,7 @@ import { Metadata } from 'next';
 import gameService from '@/lib/services/gameService';
 import GameItem from './components/games/GameItem';
 import LandingInfo from './components/landinginfo/LandingInfo';
+import Pagination from './components/pagination/Pagination';
 
 export const metadata: Metadata = {
   title: process.env.NEXT_PUBLIC_APP_NAME,
@@ -20,6 +21,8 @@ export default async function Home() {
         {Array.isArray(games) &&
           games.map((game) => <GameItem key={game.id} game={game} />)}
       </div>
+
+      <Pagination />
     </div>
   );
 }
