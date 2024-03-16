@@ -20,6 +20,7 @@ export default function Games() {
   }, [page]);
 
   const handlePrevious = () => {
+    if (page === 1) return;
     setPage(page - 1);
   };
 
