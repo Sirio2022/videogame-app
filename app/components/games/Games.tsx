@@ -37,6 +37,22 @@ export default function Games() {
         {Array.isArray(filteredGames) &&
           filteredGames.map((game) => <GameItem key={game.id} game={game} />)}
       </div>
+
+      <div className="join flex justify-center gap-5">
+        <div>
+          <button
+            className="join-item btn btn-neutral"
+            onClick={handlePrevious}
+          >
+            Previous page
+          </button>
+        </div>
+        <div>
+          <button className="join-item btn btn-neutral" onClick={handleNext}>
+            Next page
+          </button>
+        </div>
+      </div>
     </div>
   ) : (
     <div>

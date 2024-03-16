@@ -1,10 +1,14 @@
 'use client';
 
 import useGames from '@/lib/hooks/useGamesStore';
+import usePagination from '@/lib/hooks/usePaginationStore';
+import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 export default function SearchBox() {
+  const router = useRouter();
   const { games, setFilteredGames } = useGames();
+  const { setPage } = usePagination();
   const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
@@ -23,11 +27,13 @@ export default function SearchBox() {
     e.preventDefault();
     if (searchTerm === '') {
       setFilteredGames(games);
+
       return;
     }
 
     setFilteredGames([]);
     setSearchTerm('');
+    router.push('/');
   };
 
   return (
@@ -38,7 +44,10 @@ export default function SearchBox() {
           placeholder="Search for games"
           className="border-2 border-gray-300 p-2 rounded-lg w-96 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
           value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
+          onChange={(e) => {
+            setSearchTerm(e.target.value);
+            setPage(1);
+          }}
         />
         <button
           type="submit"

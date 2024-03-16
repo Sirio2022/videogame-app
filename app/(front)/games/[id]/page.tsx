@@ -32,19 +32,25 @@ export default async function GameDetails({
           style={{ objectFit: 'cover' }}
         />
         <div className="py-2">
-          <p className="text-white"><span className='text-yellow-400'>Rating: </span>{game.rating}</p>
-          <p className="text-white"><span className='text-yellow-400'>Released: </span> {game.released}</p>
           <p className="text-white">
-            <span className='text-yellow-400' >Genres: </span> {game.genres.map((genre) => genre.name).join(', ')}
+            <span className="text-yellow-400">Rating: </span>
+            {game.rating}
           </p>
           <p className="text-white">
-            <span className='text-yellow-400'>Platforms: </span>
+            <span className="text-yellow-400">Released: </span> {game.released}
+          </p>
+          <p className="text-white">
+            <span className="text-yellow-400">Genres: </span>{' '}
+            {game.genres.map((genre: any) => genre.name).join(', ')}
+          </p>
+          <p className="text-white">
+            <span className="text-yellow-400">Platforms: </span>
             {game.platforms
-              .map((platform) => platform.platform.name)
+              .map((platform: any) => platform.platform.name)
               .join(', ')}
           </p>
 
-          <p className='text-yellow-400'>Description:</p>
+          <p className="text-yellow-400">Description:</p>
           <p
             className="text-white"
             dangerouslySetInnerHTML={{ __html: game.description }}
