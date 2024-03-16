@@ -1,23 +1,24 @@
 'use client';
 
 import usePagination from '@/lib/hooks/usePaginationStore';
+import useGames from '@/lib/hooks/useGamesStore';
 import gameService from '@/lib/services/gameService';
 import GameItem from './GameItem';
-import { useEffect, useState } from 'react';
-import { Game } from '@/lib/models/GameModel';
+import { useEffect } from 'react';
+import NotFound from '../messagebox/NotFound';
 
 export default function Games() {
   const { page, setPage } = usePagination();
 
-  const [games, setGames] = useState<Game[]>([]);
+  const { games, setGames, filteredGames } = useGames();
 
   useEffect(() => {
     const fetchGames = async () => {
       const response = await gameService.getGames(page);
-      setGames(response || []);
+      setGames(response);
     };
     fetchGames();
-  }, [page]);
+  }, [page, setGames]);
 
   const handlePrevious = () => {
     if (page === 1) return;
@@ -28,7 +29,16 @@ export default function Games() {
     setPage(page + 1);
   };
 
-  return (
+  return filteredGames.length === 0 ? (
+    <NotFound />
+  ) : filteredGames.length > 0 ? (
+    <div>
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-4 xl:grid-cols-8">
+        {Array.isArray(filteredGames) &&
+          filteredGames.map((game) => <GameItem key={game.id} game={game} />)}
+      </div>
+    </div>
+  ) : (
     <div>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-4 xl:grid-cols-8">
         {Array.isArray(games) &&

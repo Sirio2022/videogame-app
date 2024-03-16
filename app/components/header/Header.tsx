@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Logo from '../../images/BgLogo.png';
 import Link from 'next/link';
 import GenresMenu from '../games/Genres';
+import SearchBox from '../searchbox/SearchBox';
 
 export default function Header() {
   return (
@@ -9,6 +10,8 @@ export default function Header() {
       <Link href="/">
         <Image src={Logo} alt="Logo" className="w-32 h-auto" />
       </Link>
+
+      <SearchBox />
 
       <GenresMenu />
     </div>
