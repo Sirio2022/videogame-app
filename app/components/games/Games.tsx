@@ -34,17 +34,17 @@ export default function Games() {
           games.map((game) => <GameItem key={game.id} game={game} />)}
       </div>
 
-      <div className="join flex justify-center">
+      <div className="join flex justify-center gap-5">
         <div>
           <button
-            className="join-item btn btn-outline"
+            className="join-item btn btn-neutral"
             onClick={handlePrevious}
           >
             Previous page
           </button>
         </div>
         <div>
-          <button className="join-item btn btn-outline" onClick={handleNext}>
+          <button className="join-item btn btn-neutral" onClick={handleNext}>
             Next page
           </button>
         </div>
