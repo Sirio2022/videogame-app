@@ -4,24 +4,29 @@ import usePagination from '@/lib/hooks/usePaginationStore';
 import useGames from '@/lib/hooks/useGamesStore';
 import gameService from '@/lib/services/gameService';
 import GameItem from './GameItem';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import NotFound from '../messagebox/NotFound';
 import ReactPaginate from 'react-paginate';
 
 export default function Games() {
   const { page, setPage } = usePagination();
+  const [loading, setLoading] = useState(false);
 
   const { games, setGames, filteredGames } = useGames();
 
   const pageCount = 300;
 
   useEffect(() => {
+    setLoading(true);
     const fetchGames = async () => {
       const response = await gameService.getGames(page);
       setGames(response);
+      setLoading(false);
     };
     fetchGames();
   }, [page, setGames]);
+
+  if (loading) return <span className="loading loading-ring loading-lg"></span>;
 
   return filteredGames.length === 0 ? (
     <NotFound />
