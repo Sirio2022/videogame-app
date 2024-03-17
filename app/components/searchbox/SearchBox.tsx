@@ -38,7 +38,7 @@ export default function SearchBox() {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}  className='flex flex-col md:flex-row md:items-center '>
         <input
           type="text"
           placeholder="Search for games"
@@ -51,7 +51,7 @@ export default function SearchBox() {
         />
         <button
           type="submit"
-          className="btn btn-primary ml-2 px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+          className="btn btn-primary ml-2 px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent my-4 w-14"
         >
           Clear
         </button>

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default async function Home() {
   return (
-    <div className="flex flex-col items-center justify-between p-6">
+    <div className="grid grid-cols-1 gap-4">
       <LandingInfo />
 
       <Games />
