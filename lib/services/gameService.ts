@@ -9,7 +9,7 @@ interface ApiResponse {
 const getGames = async (page: number = 1) => {
   try {
     const response = await fetch(
-      `https://api.rawg.io/api/games?key=${process.env.RAWG_API_KEY}&page=${page}`
+      `https://api.rawg.io/api/games?key=${process.env.NEXT_PUBLIC_RAWG_API_KEY}&page=${page}`
     );
 
     if (!response.ok) {
@@ -29,7 +29,7 @@ const getGames = async (page: number = 1) => {
 const getGamesById = async (id: number) => {
   try {
     const response = await fetch(
-      `https://api.rawg.io/api/games/${id}?key=${process.env.RAWG_API_KEY}`
+      `https://api.rawg.io/api/games/${id}?key=${process.env.NEXT_PUBLIC_RAWG_API_KEY}`
     );
 
     if (!response.ok) {

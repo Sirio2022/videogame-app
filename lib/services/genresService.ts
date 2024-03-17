@@ -7,7 +7,7 @@ interface GenresResponse {
 const getGenres = async () => {
   try {
     const response = await fetch(
-      `https://api.rawg.io/api/genres?key=${process.env.RAWG_API_KEY}`
+      `https://api.rawg.io/api/genres?key=${process.env.NEXT_PUBLIC_RAWG_API_KEY}`
     );
 
     if (!response.ok) {
