@@ -46,11 +46,13 @@ export default function Games() {
         marginPagesDisplayed={2}
         pageRangeDisplayed={5}
         onPageChange={(data) => setPage(data.selected + 1)}
-        containerClassName={'pagination'}
+        containerClassName={
+          'pagination w-full flex flex-col sm:flex-row justify-center space-y-2 sm:space-y-0 sm:space-x-2'
+        }
         activeClassName={'active'}
-        pageClassName={'page-item'}
-        previousClassName={'page-item'}
-        nextClassName={'page-item'}
+        pageClassName={'page-item m-0 p-0'}
+        previousClassName={'page-item m-0 p-0'}
+        nextClassName={'page-item m-0 p-0'}
         breakClassName={'page-item'}
         pageLinkClassName={'page-link'}
         previousLinkClassName={'page-link'}
@@ -75,11 +77,13 @@ export default function Games() {
         marginPagesDisplayed={2}
         pageRangeDisplayed={5}
         onPageChange={(data) => setPage(data.selected + 1)}
-        containerClassName={'pagination'}
+        containerClassName={
+          'pagination w-full flex flex-col sm:flex-row justify-center space-y-2 sm:space-y-0 sm:space-x-2'
+        }
         activeClassName={'active'}
-        pageClassName={'page-item'}
-        previousClassName={'page-item'}
-        nextClassName={'page-item'}
+        pageClassName={'page-item m-0 p-0'}
+        previousClassName={'page-item m-0 p-0'}
+        nextClassName={'page-item m-0 p-0'}
         breakClassName={'page-item'}
         pageLinkClassName={'page-link'}
         previousLinkClassName={'page-link'}
