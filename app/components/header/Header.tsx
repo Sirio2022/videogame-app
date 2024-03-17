@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Logo from '../../images/BgLogo.png';
 import Link from 'next/link';
 import GenresMenu from '../games/Genres';
+import PlatformsMenu from '../games/Platforms';
 import SearchBox from '../searchbox/SearchBox';
 
 export default function Header() {
@@ -13,7 +14,11 @@ export default function Header() {
 
       <SearchBox />
 
-      <GenresMenu />
+      <div>
+        <PlatformsMenu />
+
+        <GenresMenu />
+      </div>
     </div>
   );
 }
