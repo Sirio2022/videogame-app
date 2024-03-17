@@ -6,11 +6,14 @@ import gameService from '@/lib/services/gameService';
 import GameItem from './GameItem';
 import { useEffect } from 'react';
 import NotFound from '../messagebox/NotFound';
+import ReactPaginate from 'react-paginate';
 
 export default function Games() {
   const { page, setPage } = usePagination();
 
   const { games, setGames, filteredGames } = useGames();
+
+  const pageCount = 100;
 
   useEffect(() => {
     const fetchGames = async () => {
@@ -19,15 +22,6 @@ export default function Games() {
     };
     fetchGames();
   }, [page, setGames]);
-
-  const handlePrevious = () => {
-    if (page === 1) return;
-    setPage(page - 1);
-  };
-
-  const handleNext = () => {
-    setPage(page + 1);
-  };
 
   return filteredGames.length === 0 ? (
     <NotFound />
@@ -38,21 +32,27 @@ export default function Games() {
           filteredGames.map((game) => <GameItem key={game.id} game={game} />)}
       </div>
 
-      <div className="join flex justify-center gap-5">
-        <div>
-          <button
-            className="join-item btn btn-neutral"
-            onClick={handlePrevious}
-          >
-            Previous page
-          </button>
-        </div>
-        <div>
-          <button className="join-item btn btn-neutral" onClick={handleNext}>
-            Next page
-          </button>
-        </div>
-      </div>
+      <ReactPaginate
+        forcePage={page === 1 ? 0 : page - 1}
+        previousLabel={'previous'}
+        nextLabel={'next'}
+        breakLabel={'...'}
+        pageCount={pageCount}
+        marginPagesDisplayed={2}
+        pageRangeDisplayed={5}
+        onPageChange={(data) => setPage(data.selected + 1)}
+        containerClassName={'pagination'}
+        activeClassName={'active'}
+        pageClassName={'page-item'}
+        previousClassName={'page-item'}
+        nextClassName={'page-item'}
+        breakClassName={'page-item'}
+        pageLinkClassName={'page-link'}
+        previousLinkClassName={'page-link'}
+        nextLinkClassName={'page-link'}
+        breakLinkClassName={'page-link'}
+        activeLinkClassName={'active'}
+      />
     </div>
   ) : (
     <div>
@@ -61,21 +61,27 @@ export default function Games() {
           games.map((game) => <GameItem key={game.id} game={game} />)}
       </div>
 
-      <div className="join flex justify-center gap-5">
-        <div>
-          <button
-            className="join-item btn btn-neutral"
-            onClick={handlePrevious}
-          >
-            Previous page
-          </button>
-        </div>
-        <div>
-          <button className="join-item btn btn-neutral" onClick={handleNext}>
-            Next page
-          </button>
-        </div>
-      </div>
+      <ReactPaginate
+        forcePage={page === 1 ? 0 : page - 1}
+        previousLabel={'previous'}
+        nextLabel={'next'}
+        breakLabel={'...'}
+        pageCount={pageCount}
+        marginPagesDisplayed={2}
+        pageRangeDisplayed={5}
+        onPageChange={(data) => setPage(data.selected + 1)}
+        containerClassName={'pagination'}
+        activeClassName={'active'}
+        pageClassName={'page-item'}
+        previousClassName={'page-item'}
+        nextClassName={'page-item'}
+        breakClassName={'page-item'}
+        pageLinkClassName={'page-link'}
+        previousLinkClassName={'page-link'}
+        nextLinkClassName={'page-link'}
+        breakLinkClassName={'page-link'}
+        activeLinkClassName={'active'}
+      />
     </div>
   );
 }

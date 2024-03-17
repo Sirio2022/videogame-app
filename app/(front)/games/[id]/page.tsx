@@ -21,7 +21,7 @@ export default async function GameDetails({
         </Link>
       </div>
 
-      <div className="flex flex-col container mx-auto items-center justify-center py-6 vh-100 gap-2">
+      <div className="flex flex-col container mx-auto items-center justify-center py-6 gap-10">
         <h1 className="text-4xl text-white py-2">{game.name}</h1>
         <Image
           src={game.background_image}
