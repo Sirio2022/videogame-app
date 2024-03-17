@@ -1,4 +1,3 @@
-import Axios from '@/app/utils/axiosWithCache';
 import { Genres } from '../models/GenresModel';
 
 interface GenresResponse {
@@ -7,15 +6,21 @@ interface GenresResponse {
 
 const getGenres = async () => {
   try {
-    const response = await Axios.get<GenresResponse>(
-      `genres?key=${process.env.NEXT_PUBLIC_RAWG_API_KEY}`
+    const response = await fetch(
+      `https://api.rawg.io/api/genres?key=${process.env.NEXT_PUBLIC_RAWG_API_KEY}`
     );
 
-    const genres = response.data.results;
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+
+    const data = await response.json();
+    const genres = data.results;
 
     return genres;
   } catch (error) {
     console.log('Error fetching genres', error);
+    return []; // Return an empty array in case of error
   }
 };
 

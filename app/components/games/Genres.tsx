@@ -1,10 +1,37 @@
+'use client';
+
 import fetchGenres from '@/lib/services/genresService';
 import { Genres } from '@/lib/models/GenresModel';
-import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import useGames from '@/lib/hooks/useGamesStore';
 
-export default async function GenresMenu() {
-    
-  const genres = await fetchGenres.getGenres();
+export default function GenresMenu() {
+  const [genres, setGenres] = useState<Genres[]>([]);
+  const [selectedGenre, setSelectedGenre] = useState<Genres | null>(null);
+
+  const { setFilteredGames, games } = useGames();
+
+  useEffect(() => {
+    const fetchGenresData = async () => {
+      const response = fetchGenres.getGenres();
+      const data = await response;
+      setGenres(data);
+    };
+
+    fetchGenresData();
+  }, []);
+
+  const genderHandler = (genre: Genres) => {
+    setSelectedGenre(genre);
+    if (genre) {
+      const filtered = games.filter((game) =>
+        game.genres.map((g) => g.name).includes(genre.name)
+      );
+      setFilteredGames(filtered);
+    } else {
+      setFilteredGames(games);
+    }
+  };
 
   return (
     <div className="dropdown dropdown-bottom dropdown-end">
@@ -17,7 +44,13 @@ export default async function GenresMenu() {
       >
         {genres?.map((genre: Genres) => (
           <li key={genre.id}>
-            <Link href={`/genres/${genre.slug}`}>{genre.name}</Link>
+            <button
+              type="button"
+              className="btn btn-ghost"
+              onClick={() => genderHandler(genre)}
+            >
+              {genre.name}
+            </button>
           </li>
         ))}
       </ul>
