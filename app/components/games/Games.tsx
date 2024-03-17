@@ -13,7 +13,7 @@ export default function Games() {
 
   const { games, setGames, filteredGames } = useGames();
 
-  const pageCount = 100;
+  const pageCount = 300;
 
   useEffect(() => {
     const fetchGames = async () => {
