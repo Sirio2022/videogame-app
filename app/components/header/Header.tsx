@@ -14,10 +14,9 @@ export default function Header() {
 
       <SearchBox />
 
-      <div>
-        <PlatformsMenu />
-
+      <div className='flex flex-col items-center md:flex-row'>
         <GenresMenu />
+        <PlatformsMenu />
       </div>
     </div>
   );
