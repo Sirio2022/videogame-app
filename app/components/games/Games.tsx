@@ -31,7 +31,7 @@ export default function Games() {
   return filteredGames.length === 0 ? (
     <NotFound />
   ) : filteredGames.length > 0 ? (
-    <div>
+    <div className='m-4'>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-4 xl:grid-cols-8">
         {Array.isArray(filteredGames) &&
           filteredGames.map((game) => <GameItem key={game.id} game={game} />)}
@@ -62,7 +62,7 @@ export default function Games() {
       />
     </div>
   ) : (
-    <div>
+    <div className='m-4'>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-4 xl:grid-cols-8">
         {Array.isArray(games) &&
           games.map((game) => <GameItem key={game.id} game={game} />)}
