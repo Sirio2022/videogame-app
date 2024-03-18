@@ -32,7 +32,7 @@ export default function Games() {
     <NotFound />
   ) : filteredGames.length > 0 ? (
     <div className='m-4'>
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-4 xl:grid-cols-6">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-4 xl:grid-cols-5">
         {Array.isArray(filteredGames) &&
           filteredGames.map((game) => <GameItem key={game.id} game={game} />)}
       </div>
