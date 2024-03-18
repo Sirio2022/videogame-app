@@ -16,7 +16,7 @@ export default async function GameDetails({
   return (
     <div>
       <div className="my-2 mx-2">
-        <Link href="/" className="hover:text-white">
+        <Link href="/" className=" text-white hover:text-blue-400">
           Return to home
         </Link>
       </div>
