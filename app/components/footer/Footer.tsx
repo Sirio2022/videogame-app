@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <div className="min-h-screen">
+    <div className="mt-auto">
       <footer className="flex items-center justify-center p-4 ">
         <p className="text-yellow-400 text-xl">
           Copyright &copy; {new Date().getFullYear()}{' '}
