@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${firaCode.className} antialiased flex flex-col min-h-screen`}>
+      <body className={`${firaCode.className} antialiased flex flex-col`}>
         <Header />
         {children}
         <Footer />
