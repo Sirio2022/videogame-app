@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   description: 'Information about video games',
 };
 
-export default function GameLayout({
+export default function Layout({
   children,
 }: {
   children: React.ReactNode;
