@@ -15,7 +15,7 @@ export default async function GameDetails({
 
   return (
     <div>
-      <div className="flex flex-col container mx-auto items-center justify-center gap-20">
+      <div className="flex flex-col min-h-screen container mx-auto items-center justify-center gap-20">
         <div className="mx-2">
           <Link href="/" className=" text-white hover:text-blue-400">
             Return to home
@@ -34,7 +34,7 @@ export default async function GameDetails({
           />
         </div>
 
-        <div className="flex flex-col min-h-screen">
+        <div className="flex flex-col">
           <p className="text-white">
             <span className="text-yellow-400">Rating: </span>
             {game.rating}
