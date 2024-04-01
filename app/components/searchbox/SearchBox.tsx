@@ -27,8 +27,6 @@ export default function SearchBox() {
     e.preventDefault();
     if (searchTerm === '') {
       setFilteredGames(games);
-
-      return;
     }
 
     setFilteredGames([]);
@@ -38,7 +36,10 @@ export default function SearchBox() {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}  className='flex flex-col md:flex-row md:items-center '>
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col md:flex-row md:items-center "
+      >
         <input
           type="text"
           placeholder="Search for games"
