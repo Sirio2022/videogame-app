@@ -4,18 +4,16 @@ import Link from 'next/link';
 
 export default function GameItem({ game }: { game: Game }) {
   return (
-    <div className="card bg-base-300 shadow-xl mb-4">
-      <div>
-        <Link href={`/games/${game.id}`}>
-          <Image
-            src={game.background_image}
-            alt={game.name}
-            width={300}
-            height={200}
-            className="object-cover w-full h-48"
-          />
-        </Link>
-      </div>
+    <div className="card bg-base-300 shadow-xl mb-4 self-start">
+      <Link href={`/games/${game.id}`}>
+        <Image
+          src={game.background_image}
+          alt={game.name}
+          width={300}
+          height={200}
+          className="object-cover w-full h-48"
+        />
+      </Link>
 
       <div className="card-body">
         <h2 className="card-title font-normal">
